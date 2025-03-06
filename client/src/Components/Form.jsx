@@ -11,7 +11,7 @@ function Form() {
         <form className={form.form} onSubmit={handleSubmit}>
           <fieldset className={form.fieldset}>
             <legend className={form.legend}>Complete Form</legend>
-            <Name label="Name" />
+            <Name />
             <Email />
             <button type="submit" className={form.submitButton}>
               Submit
