@@ -1,6 +1,13 @@
 import { useState } from "react";
 import style from "../styles/Name.module.scss";
 
+const capitalChar (value) {
+  return value
+  .replace(/\b\w/g, (char) => char.toUpperCase())
+  .replace(/\s+/g, " ")
+  .trim()
+}
+
 function Name({ formInput, handleChange, label, ...props }) {
   const [isFocused, setIsFocused] = useState(false);
 

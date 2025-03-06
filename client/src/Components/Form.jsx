@@ -1,8 +1,22 @@
-// import form from "./Form.module.scss";
 import form from "../styles/Form.module.scss";
 import Name from "./Name";
 import Email from "./Email";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+
+const schema = z.object({
+  name: z
+    .string()
+    .min(2, "min 2 characters")
+    .max(50, "max 50 characters")
+    .regex(
+      /^[A-Za-zÀ-ÖØ-öø-ÿ' -]+$/,
+      "Only letters, spaces, hyphens (-), and apostrophes (')"
+    )
+    .trim(),
+});
 
 function Form() {
   const [formInput, setFormInput] = useState({
@@ -11,6 +25,15 @@ function Form() {
   });
 
   const [retrievedData, setRetrievedData] = useState("");
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    FormState: { error },
+  } = useForm({
+    resolver: zodResolver(schema),
+  });
 
   function handleChange(event) {
     setFormInput({ ...formInput, [event.target.name]: event.target.value });
