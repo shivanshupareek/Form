@@ -1,10 +1,19 @@
-function Email({ formInput, handleChange }) {
+import { useFormContext } from "./FormContext";
+
+function Email() {
+  const { register, handleChange, formInput, errors } = useFormContext();
+
   return (
     <>
       <label htmlFor="email" id="emailLabel">
         Email:
       </label>
+
       <input
+        {...register("email", {
+          onChange: (event) =>
+            handleChange({ target: { email: "", value: event.target.value } }),
+        })}
         type="email"
         id="email"
         name="email"
@@ -16,6 +25,8 @@ function Email({ formInput, handleChange }) {
         autoComplete
         autoCorrect
       />
+
+      {errors.email && <p>{errors.email.message}</p>}
     </>
   );
 }

@@ -1,9 +1,12 @@
 import Form from "./Form";
+import { FormProvider } from "./FormContext";
 
 function App() {
   return (
     <div className="App">
-      <Form />
+      <FormProvider>
+        <Form />
+      </FormProvider>
     </div>
   );
 }

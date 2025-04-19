@@ -4,7 +4,7 @@ import Name from "./Name";
 import Email from "./Email";
 
 function Form() {
-  const { handleSubmit, retrievedData } = useFormContext;
+  const { handleSubmit, retrievedData } = useFormContext();
   return (
     <>
       <main className={form.main}>

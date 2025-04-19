@@ -10,14 +10,14 @@ function capitalChar(value) {
 }
 
 function Name() {
-  const { register, formInput, error, handleChange } = useFormContext;
+  const { register, formInput, errors, handleChange } = useFormContext();
   const [isFocused, setIsFocused] = useState(false);
 
   return (
     <>
       <div
         className={`${style.container} ${
-          isFocused || formInput.name ? style.focused : ""
+          isFocused || formInput?.name ? style.focused : ""
         }`}
       >
         <label htmlFor="name" id="nameLabel" className={style.label}>
@@ -39,16 +39,16 @@ function Name() {
           name="name"
           className={style.input}
           value={formInput.name}
-          onChange={handleChange}
           onFocus={() => setIsFocused(true)}
           onBlur={(e) => setIsFocused(e.target.value !== "")}
-          aria-required
-          autoComplete
+          onChange={handleChange}
+          aria-required="true"
+          autoComplete="name"
           autoFocus
         />
       </div>
 
-      {error.name && <p className={style.error}>{error.name.message}</p>}
+      {errors.name && <p className={style.error}>{errors.name.message}</p>}
     </>
   );
 }

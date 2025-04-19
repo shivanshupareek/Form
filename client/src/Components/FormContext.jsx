@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import formSchema from "./formSchema";
 
-const formContext = createContext();
+const FormContext = createContext(null);
 
 export function FormProvider({ children }) {
   //this is for the react-hook-form set-up
@@ -12,7 +12,7 @@ export function FormProvider({ children }) {
     register,
     handleSubmit,
     setValue,
-    FormState: { error },
+    formState: { errors },
   } = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: { name: "", email: "" },
@@ -39,12 +39,12 @@ export function FormProvider({ children }) {
 
   //this is for the submission of form
   function onSubmit(data) {
-    setRetrievedData((prev) => ({ ...prev, data }));
+    setRetrievedData((prev) => [...prev, data]);
     setFormInput({ name: "", email: "" });
 
     fetch("http://localhost:4000/form", {
       method: "POST",
-      body: JSON.stringify(formInput),
+      body: JSON.stringify(data),
       headers: {
         "content-type": "application/json",
       },
@@ -54,20 +54,21 @@ export function FormProvider({ children }) {
   const value = {
     register,
     handleSubmit: handleSubmit(onSubmit),
-    error,
+    errors,
     setValue,
     setFormInput,
     retrievedData,
     handleChange,
+    formInput,
   };
 
   return (
     <>
-      <formContext.Provider value={value}>{children}</formContext.Provider>
+      <FormContext.Provider value={value}>{children}</FormContext.Provider>
     </>
   );
 }
 
 export function useFormContext() {
-  return useContext(formContext);
+  return useContext(FormContext);
 }
