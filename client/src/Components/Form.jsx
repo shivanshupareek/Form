@@ -1,10 +1,23 @@
+import React from "react";
 import { useFormContext } from "./FormContext";
 import form from "../styles/Form.module.scss";
 import Name from "./Name";
 import Email from "./Email";
 
 function Form() {
-  const { handleSubmit, retrievedData } = useFormContext();
+  const context = useFormContext();
+
+  if (!context) {
+    console.error("form context is undefined");
+    return (
+      <div>
+        <p>Something went wrong, please try again later</p>
+      </div>
+    );
+  }
+
+  const { handleSubmit, retrievedData } = context;
+
   return (
     <>
       <main className={form.main}>

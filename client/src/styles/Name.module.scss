@@ -6,6 +6,10 @@
   width: 100%;
   margin: 3rem;
 
+  &:hover {
+    color: rgb(0, 55, 255);
+  }
+
   .input {
     width: 12rem;
     height: 2.5rem;
@@ -41,5 +45,9 @@
     color: rgb(0, 55, 255);
     background-color: #fff;
     padding: 0 5px;
+  }
+
+  &.input:focus ~ .label {
+    color: rgb(0, 55, 255);
   }
 }

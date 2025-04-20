@@ -10,8 +10,14 @@ const nameSchema = z
   )
   .trim();
 
+const emailSchema = z
+  .string()
+  .email("Please enter a valid email address")
+  .trim();
+
 const formSchema = z.object({
   name: nameSchema,
+  email: emailSchema,
 });
 
 export default formSchema;

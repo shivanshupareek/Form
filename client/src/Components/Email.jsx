@@ -1,3 +1,4 @@
+import React from "react";
 import { useFormContext } from "./FormContext";
 
 function Email() {
@@ -12,18 +13,18 @@ function Email() {
       <input
         {...register("email", {
           onChange: (event) =>
-            handleChange({ target: { email: "", value: event.target.value } }),
+            handleChange({
+              target: { name: "email", value: event.target.value },
+            }),
         })}
         type="email"
         id="email"
         name="email"
         title="email"
         value={formInput.email}
-        onChange={handleChange}
         placeholder="example@mail.com"
-        aria-required
-        autoComplete
-        autoCorrect
+        aria-required="true"
+        autoComplete="email"
       />
 
       {errors.email && <p>{errors.email.message}</p>}
