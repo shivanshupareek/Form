@@ -1,5 +1,5 @@
-import Form from "./Form";
-import { FormProvider } from "./FormContext";
+import Form from "./Components/Form";
+import { FormProvider } from "./Components/FormContext";
 import React from "react";
 import style from "../styles/App.module.scss";
 
