@@ -2,7 +2,7 @@ import React from "react";
 import { createContext, useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import formSchema from "./formSchema";
+import formSchema from "../schema/formSchema";
 
 const FormContext = createContext(null);
 

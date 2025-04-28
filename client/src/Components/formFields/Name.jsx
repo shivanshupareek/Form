@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import { useFormContext } from "./FormContext";
-import style from "../styles/Name.module.scss";
+import { useFormContext } from "../../context/FormContext";
+import style from "../../styles/Name.module.scss";
 
 function capitalChar(value) {
   return value

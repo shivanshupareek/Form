@@ -1,8 +1,8 @@
 import React from "react";
-import { useFormContext } from "./FormContext";
-import form from "../styles/Form.module.scss";
-import Name from "./Name";
-import Email from "./Email";
+import { useFormContext } from "../../context/FormContext";
+import form from "../../styles/Form.module.scss";
+import Name from "../formFields/Name";
+import Email from "../formFields/Email";
 
 function Form() {
   const context = useFormContext();
