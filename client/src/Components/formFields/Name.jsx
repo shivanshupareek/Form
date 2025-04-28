@@ -27,31 +27,40 @@ function Name() {
           isFocused || formInput?.name ? style.focused : ""
         } ${hasValue ? style.filled : ""}`}
       >
-        <label htmlFor="name" id="nameLabel" className={style.label}>
-          Name
-        </label>
+        <div className={style.inputWrapper}>
+          <label htmlFor="name" id="nameLabel" className={style.label}>
+            Name
+          </label>
 
-        <input
-          {...register("name", {
-            onChange: (event) =>
-              handleChange({
-                target: {
-                  name: "name",
-                  value: capitalChar(event.target.value),
-                },
-              }),
-          })}
-          type="text"
-          id="name"
-          name="name"
-          className={style.input}
-          value={formInput.name}
-          onFocus={() => setIsFocused(true)}
-          onBlur={handleBlur}
-          aria-required="true"
-          autoComplete="name"
-          autoFocus
-        />
+          <input
+            {...register("name", {
+              onChange: (event) =>
+                handleChange({
+                  target: {
+                    name: "name",
+                    value: capitalChar(event.target.value),
+                  },
+                }),
+            })}
+            type="text"
+            id="name"
+            name="name"
+            className={style.input}
+            value={formInput.name}
+            onFocus={() => setIsFocused(true)}
+            onBlur={handleBlur}
+            aria-required="true"
+            autoComplete="name"
+            autoFocus
+          />
+        </div>
+        <span
+          className={`${style.subtext} ${
+            hasValue ? style.filled : isFocused ? style.highlighted : ""
+          }`}
+        >
+          required
+        </span>
       </div>
 
       {errors.name && <p className={style.error}>{errors.name.message}</p>}

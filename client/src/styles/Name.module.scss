@@ -6,6 +6,12 @@
   width: 100%;
   margin: 3rem;
 
+  .inputWrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
   .input {
     width: 12rem;
     height: 2.5rem;
@@ -17,7 +23,6 @@
     background-color: #fff;
     transition: border-color 0.3s ease-in-out, padding 0.2s ease-in-out;
     font-size: 1rem;
-    // letter-spacing: 0.5px;
 
     &:focus {
       border-color: rgb(0, 55, 255);
@@ -40,6 +45,7 @@
     transition: all 0.3s ease-in-out;
     pointer-events: none;
     font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.5, 0, 0.5, 1);
 
     &:focus {
       color: rgb(0, 55, 255);
@@ -53,13 +59,31 @@
     color: rgb(0, 55, 255);
     background-color: #fff;
     padding: 0 5px;
+    top: 0;
+    transform: translateY(-50%);
   }
 
   &.filled .label {
+    top: 0;
+    transform: translateY(-50%);
     color: #000;
   }
 
   &.input:focus ~ .label {
     color: rgb(0, 55, 255);
+  }
+
+  .subtext {
+    padding: 4px 0 0 4px;
+    font-size: 0.75rem;
+    color: rgb(89, 89, 89);
+  }
+
+  .highlighted {
+    color: red;
+  }
+
+  .filled {
+    color: green;
   }
 }
