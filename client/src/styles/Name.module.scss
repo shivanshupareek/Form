@@ -6,24 +6,28 @@
   width: 100%;
   margin: 3rem;
 
-  &:hover {
-    color: rgb(0, 55, 255);
-  }
-
   .input {
     width: 12rem;
     height: 2.5rem;
     line-height: 30px;
-    padding: 2px 1.5rem 2px 1rem;
+    padding: 4px 1.5rem 2px 0.8rem;
     border: 1.75px solid #000;
     border-radius: 8px;
     outline: none;
-    background-color: #fcfcfc;
+    background-color: #fff;
     transition: border-color 0.3s ease-in-out, padding 0.2s ease-in-out;
-    letter-spacing: 0.5px;
+    font-size: 1rem;
+    // letter-spacing: 0.5px;
 
     &:focus {
       border-color: rgb(0, 55, 255);
+    }
+
+    &:-webkit-autofill {
+      background-color: #fff;
+      box-shadow: 0 0 0px 1000px #fff inset !important;
+      -webkit-text-fill-color: #000 !important;
+      transition: background-color 5s ease-in-out 0s;
     }
   }
 
@@ -36,6 +40,10 @@
     transition: all 0.3s ease-in-out;
     pointer-events: none;
     font-size: 1rem;
+
+    &:focus {
+      color: rgb(0, 55, 255);
+    }
   }
 
   &.focused .label {
@@ -45,6 +53,10 @@
     color: rgb(0, 55, 255);
     background-color: #fff;
     padding: 0 5px;
+  }
+
+  &.filled .label {
+    color: #000;
   }
 
   &.input:focus ~ .label {

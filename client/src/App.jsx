@@ -1,7 +1,7 @@
-import Form from "./Components/Form";
-import { FormProvider } from "./Components/FormContext";
+import Form from "../src/Components/layout/Form";
+import { FormProvider } from "../src/context/FormContext";
 import React from "react";
-import style from "../styles/App.module.scss";
+import style from "../src/styles/App.module.scss";
 
 function App() {
   return (

@@ -25,7 +25,7 @@ async function form(request, response) {
     const newForm = new formModel(request.body);
     await newForm.save();
     console.log("form filled");
-    response.send("the form is now filled");
+    response.send("the form is connected");
   } catch (error) {
     console.error("error message is", error);
     response.status(500).send("internal server error");

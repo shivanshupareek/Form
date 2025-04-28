@@ -13,13 +13,19 @@ function capitalChar(value) {
 function Name() {
   const { register, formInput, errors, handleChange } = useFormContext();
   const [isFocused, setIsFocused] = useState(false);
+  const [hasValue, setHasValue] = useState(false);
+
+  function handleBlur(e) {
+    setIsFocused(false);
+    setHasValue(e.target.value !== "");
+  }
 
   return (
     <>
       <div
         className={`${style.container} ${
           isFocused || formInput?.name ? style.focused : ""
-        }`}
+        } ${hasValue ? style.filled : ""}`}
       >
         <label htmlFor="name" id="nameLabel" className={style.label}>
           Name
@@ -41,8 +47,7 @@ function Name() {
           className={style.input}
           value={formInput.name}
           onFocus={() => setIsFocused(true)}
-          onBlur={(e) => setIsFocused(e.target.value !== "")}
-          onChange={handleChange}
+          onBlur={handleBlur}
           aria-required="true"
           autoComplete="name"
           autoFocus
